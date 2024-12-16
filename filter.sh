@@ -25,6 +25,10 @@ echo "$website_url" | katana -ps -pss waybackarchive,commoncrawl,alienvault -f q
 echo "Running katana actively with depth 5..."
 katana -u "$website_url" -d 5 -f qurl | uro | anew "$output_dir/output.txt"
 
+#step added by nepax: run urlfinder
+echo "Running urlfinder"
+ urlfinder -all -d "$website_url" | uro | anew "$output_dir/output.txt"
+
 # Step 3: Filter output/output.txt for different vulnerabilities
 
 # XSS
